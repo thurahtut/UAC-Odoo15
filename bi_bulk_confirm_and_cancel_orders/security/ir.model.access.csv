@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bi_bulk_confirm_and_cancel_orders.access_sale_order_cancel_wizard,access_sale_order_cancel_wizard,bi_bulk_confirm_and_cancel_orders.model_sale_order_cancel_wizard,base.group_user,1,1,1,1
