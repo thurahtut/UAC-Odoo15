@@ -1,15 +1,39 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
+    <!-- Inherit Form View -->
     <record id="purchase_vendor_property_ext_form" model="ir.ui.view">
       <field name="name">purchase.property.form.ext</field>
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="base.view_partner_form" />
       <field name="arch" type="xml">
         <field name="vat" position="after">
-          <field name="supplier_type" />
+          <field name="supplier_type" required="1" />
         </field>
       </field>
     </record>
+  <!-- Inherit Tree View -->
+  <record id="purchase_vendor_property_ext_tree" model="ir.ui.view">
+    <field name="name">purchase.property.tree.ext</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_tree" />
+    <field name="arch" type="xml">
+      <field name="country_id" position="after">
+        <field name="supplier_type" optional="show" readonly="1"/>
+      </field>
+    </field>
+  </record>
+
+  <!-- Inherit Search:Control Panel View -->
+  <record id="res_partner_view_search_ext" model="ir.ui.view">
+      <field name="name">res.partner.search.ext</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_res_partner_filter"/>
+      <field name="arch" type="xml">
+          <xpath expr="//filter[@name='inactive']" position="before">
+              <field name="supplier_type"/>
+              <separator/>
+          </xpath>
+      </field>
+  </record>
   </data>
 </odoo>
