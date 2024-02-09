@@ -5,6 +5,7 @@ from odoo import api, fields, models, _
 
 class SaleOrderCancelWizard(models.TransientModel):
     _name = "sale.order.cancel.wizard"
+    _description = "Sale Order Cancel Wizard"
 
     message = fields.Text('message', readonly=True)
 
