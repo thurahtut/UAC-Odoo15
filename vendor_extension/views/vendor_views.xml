@@ -7,7 +7,11 @@
       <field name="inherit_id" ref="base.view_partner_form" />
       <field name="arch" type="xml">
         <field name="vat" position="after">
-          <field name="supplier_type" required="1" />
+          <!-- <field name="supplier_type" required="1" /> -->
+          <field name="supplier_rank" invisible='1'/>
+          <field name="customer_rank" invisible='1'/>
+          <field name="supplier_type" attrs="{'invisible': [('supplier_rank', '=', 0)]}"/>
+          <field name="customer_type" attrs="{'invisible': [('customer_rank', '=', 0)]}"/>
         </field>
       </field>
     </record>
@@ -31,6 +35,7 @@
       <field name="arch" type="xml">
           <xpath expr="//filter[@name='inactive']" position="before">
               <field name="supplier_type"/>
+              <field name="customer_type"/>
               <separator/>
           </xpath>
       </field>
